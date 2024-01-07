@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <title></title>
+
+    <style>
+        @charset "utf-8";
+        * {
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* Links */
+
+        a, a:link, a:visited  {
+            text-decoration: none;
+        }
+
+        a:hover  {
+            text-decoration: none;
+        }
+
+        /* Common */
+
+        aside, nav, footer, header, section, main {
+            display: block;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        ul, ul li {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        img, svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        address {
+        font-style: normal;
+        }
+
+        /* Form */
+
+        input, textarea, button, select {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            background-color: transparent;
+        }
+
+        input::-ms-clear {
+            display: none;
+        }
+
+        button, input[type="submit"] {
+            display: inline-block;
+            box-shadow: none;
+            background-color: transparent;
+            background: none;
+            cursor: pointer;
+        }
+
+        input:focus, input:active,
+        button:focus, button:active {
+            outline: none;
+        }
+
+        button::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        legend {
+            display: block;
+        }
+        :root{
+            --font-family: 'Tenor Sans', sans-serif;
+            --font-size: 16px;
+
+            --black: #030712;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-300: #D1D5DB;
+            --gray-200: #E5E7EB;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+
+            --primary: #1D4ED8;
+            --primary-medium: #3B82F6;
+            --primary-light: #DBEAFE;
+
+            --secondary: #C2410C;
+            --secondary-medium: #F97316;
+            --secondary-light: #FFEDD5;
+
+            --success: #22c55e;
+            --success-medium: #86efac;
+            --success-light: #f0fdf4;
+
+            --warning: #eab308;
+            --warning-medium: #fde047;
+            --warning-light: #fefce8;
+
+            --negative: #EF4444;
+            --negative-medium: #FCA5A5;
+            --negative-light: #FEF2F2;
+            
+            --br: 0.5rem;
+            --indent-large: 5rem;
+            --indent-medium: 1.25rem;
+            --indent-light: 0.375rem;
+        }
+
+        html{
+            height: 100%;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+        body{ 
+            width: 100%;
+            height: 100vh;
+            font-family: var(--font-family);
+            font-size: var(--font-size);
+            font-weight: 400;
+            line-height: 1.25;
+            color: var(--white);
+            position: relative;
+            display: flex;
+            background: #080513;
+            background-size: cover;
+        }
+        body.stop-scrolling{
+            overflow: hidden;
+        }
+        .content{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-right: 1.25rem;
+        }
+        header{
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 2rem;
+            margin-bottom: 10vh;
+        }
+        header a:hover{
+            color: #FEBF4C;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 auto;
+        }
+        .portfolio-list{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            gap: 10px;
+            padding-right: 10px;
+        }
+        .portfolio-list__block{
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        h1{
+            font-size: 2.25rem;
+            text-wrap: balance;
+        }
+        h3{
+            font-size: 1.25rem;
+            text-wrap: balance;
+            opacity: 0.6;
+        }
+        .portfolio-list__block:nth-child(2){
+            justify-content: flex-end;
+        }
+        .portfolio-list__block img{
+            border-radius: 10px;
+            box-shadow: 0px 25px 50px 0px rgba(0, 0, 0, 0.25);
+        }
+        .portfolio-list__block img:nth-child(1){
+            margin-top: 10px;
+        }
+        .portfolio-list__block img:nth-child(2){
+            margin-bottom: 10px;
+        }
+        footer{
+            flex: 0 0 auto;
+            position: relative;
+            padding: 2rem;
+            opacity: 0.6;
+            font-size: 0.75rem;
+        }
+        /* .container{
+            padding-left: calc(50% - 680px);
+            padding-right: calc(50% - 680px);
+        } */
+        .container__padding-left{
+            padding-left: 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .contacts{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .contacts a{
+            color: var(--white);
+        }
+        ul.numbers{
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        ul.numbers li{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        ul.numbers li big{
+            font-size: 3rem;
+            color: #FEBF4C;
+        }
+        ul.tags{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        ul.tags li{
+            padding: 6px 10px;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        ul.tags li:hover{
+            background-color: rgba(255, 255, 255, 1);
+            color: rgba(0, 0, 0, 0.8);
+        }
+        .telegram-block{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        svg.logo{
+            width: 109.65px;
+            height: 40px;
+        }
+        svg.telegram{
+            width: 20px;
+            height: 16.8px;
+        }
+        .swiper-slide figure{
+            position: relative;
+        }
+        .swiper-slide figure figcaption{
+            opacity: 0;
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            right: 5px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            border-radius: 10px;
+        }
+        .swiper-slide:hover figure figcaption{
+            opacity: 1;
+        }
+        /* screens */
+        @media screen and (max-width: 1368px){
+            .container{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+        @media screen and (max-width: 1200px){
+        }
+        @media screen and (max-width: 1024px){
+        }
+        @media screen and (max-width: 768px){
+        }
+        @media screen and (max-width: 520px){
+        }
+        /* screens */
+    </style>
+
+<body>
+    <div class="content">
+        <div class="main">
+            <header>
+                <svg class="logo">
+                    <use xlink:href="#logo" />
+                </svg>
+                <ul class="contacts">
+                    <li>
+                        <a href="mailto:tisarev@gmail.com">tisarev@gmail.com</a>
+                    </li>
+                    <li class="telegram-block">
+                        <svg class="telegram">
+                            <use xlink:href="#telegram" />
+                        </svg>
+                        <a href="https://telegram.me/tisarev" target="_blank">@tisarev</a>
+                    </li>
+                </ul>
+            </header>
+            <section class="section">
+                <div class="container__padding-left">
+                    <h1>Создаю веб-дизайн, разрабатываю сайты для бизнеса, презентации и 2D/3D графику для интерфейсов.</h1>
+                    <h3>Дизайн должен быть понятным. Делаю броские и запоминающиеся сайты. Самое главное, объясняю ваш продукт широкой аудитории простым языком.</h3>
+                    <ul class="numbers">
+                        <li>
+                            <big>15+</big> Опыт <br>работы
+                        </li>
+                        <li>
+                            <big>300+</big> Выполненных <br>работ
+                        </li>
+                    </ul>
+                    <ul class="tags">
+                        <li>UX-UI дизайн</li>
+                        <li>Web-дизайн</li>
+                        <li>Верстка HTML, CSS, JS</li>
+                        <li>Wordpress</li>
+                        <li>NextJS</li>
+                        <li>React</li>
+                        <li>Векторные иллюстрации</li>
+                        <li>3D blender</li>
+                        <li>Оформление презентаций</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <footer class="section">
+            <div id="copyright"></div>
+            <!-- Yandex.Metrika informer -->
+            <a class="Metrika" href="https://metrika.yandex.ru/stat/?id=31905976&amp;from=informer"
+            target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/31905976/1_1_FFFFFFFF_FFFFFFFF_0_uniques"
+            style="opacity: 0;" alt="Яндекс.Метрика"/></a>
+            <!-- /Yandex.Metrika informer -->
+        </footer> 
+    </div>
+    <div class="portfolio-list">
+        <div class="swiper swiper-left portfolio-list__block">
+            <div class="swiper-wrapper">
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/337.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/337.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/343.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/343.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/318.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/318.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/317.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/317.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/331.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/331.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/332.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/332.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/341.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/341.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/313.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/313.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/316.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/316.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </div>
+        <div class="swiper swiper-right portfolio-list__block">
+            <div class="swiper-wrapper">
+                <a href="./img_pr/338.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/338.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/327.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/327.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/322.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/322.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/315.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/315.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+                <a href="./img_pr/336.jpg" data-fancybox="gallery" class="swiper-slide">
+                    <figure>
+                        <img src="./img_pr/336.jpg" loading="lazy" alt="Image #1">
+                        <figcaption>Деревянная скульптура</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </div>
+    </div>
+    <svg
+        style="position: absolute; width: 0; height: 0"
+        width="0"
+        height="0"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+     <defs>
+        <symbol id="logo" viewBox="0 0 110 40" fill="none">
+            <path d="M47.7284 24.0777C47.5753 24.7073 48.0522 25.314 48.7001 25.314H49.497C50.1415 25.314 50.6177 24.7132 50.4706 24.0857L50.0794 22.4171C49.8392 21.3924 48.3828 21.3864 48.1341 22.409L47.7284 24.0777Z" fill="#FAFAFA"/>
+            <path d="M68.1166 12.1358C68.0133 11.643 67.8437 11.2551 67.6078 10.9736C67.3712 10.6921 67.0683 10.4906 66.6983 10.3698C66.3283 10.2491 65.8758 10.1887 65.3416 10.1887C64.7963 10.1887 64.3542 10.6308 64.3542 11.1761V17.473C64.3542 18.0183 64.7963 18.4604 65.3416 18.4604C66.43 18.4604 67.1908 18.1238 67.6225 17.4491C68.0549 16.7751 68.27 15.6226 68.27 13.9925C68.27 13.2483 68.2191 12.6294 68.1166 12.1358Z" fill="#FAFAFA"/>
+            <path d="M109.649 0.999999C109.649 0.447714 109.201 0 108.649 0H0.999999C0.447714 0 0 0.447715 0 1V39C0 39.5523 0.447715 40 1 40H108.649C109.201 40 109.649 39.5523 109.649 39V0.999999ZM19.1862 9.27896C19.1863 9.83135 18.7386 10.2792 18.1862 10.2792H16.7633C16.211 10.2792 15.7633 10.727 15.7633 11.2792V31.4377C15.7633 31.99 15.3156 32.4377 14.7633 32.4377H12.015C11.4627 32.4377 11.015 31.99 11.015 31.4377V11.2792C11.015 10.727 10.5673 10.2792 10.015 10.2792H8.43841C7.88613 10.2792 7.43841 9.83153 7.43841 9.27924V8.59245C7.43841 8.04017 7.88613 7.59245 8.43841 7.59245H18.186C18.7382 7.59245 19.1858 8.03999 19.186 8.59217L19.1862 9.27896ZM26.0306 31.4377C26.0306 31.99 25.5829 32.4377 25.0306 32.4377H22.2823C21.7301 32.4377 21.2823 31.99 21.2823 31.4377V8.59245C21.2823 8.04017 21.7301 7.59245 22.2823 7.59245H25.0299C25.5821 7.59245 26.0298 8.04015 26.0299 8.59242L26.0306 31.4377ZM41.1695 29.1479C40.9012 29.8528 40.4958 30.4702 39.9516 31.0038C39.4066 31.5374 38.7337 31.9608 37.932 32.2717C37.1304 32.5841 36.1946 32.7404 35.1263 32.7404C33.0905 32.7404 31.5489 32.2717 30.5013 31.3358C29.6262 30.5546 29.0444 29.4268 28.7568 27.9515C28.6567 27.4383 29.0179 26.9618 29.5322 26.8673L30.0954 26.764C30.6418 26.6637 31.1548 27.0316 31.3128 27.5642C31.3962 27.8451 31.4905 28.0959 31.5959 28.317C31.811 28.7713 32.0784 29.1321 32.3968 29.4045C32.7159 29.6755 33.0905 29.8611 33.523 29.963C33.9546 30.0634 34.4472 30.1132 35.0029 30.1132C36.0713 30.1132 36.8521 29.9215 37.3455 29.5396C37.8396 29.1577 38.0862 28.6038 38.0862 27.8785C38.0862 27.4762 37.9983 27.074 37.8241 26.6709C37.6484 26.2687 37.3154 25.806 36.8213 25.2823C36.5746 25.0211 36.2301 24.6543 35.7884 24.1811C35.3459 23.7079 34.858 23.1804 34.3238 22.5947C33.7897 22.0128 33.2347 21.3932 32.6589 20.7389C32.0838 20.0845 31.5497 19.446 31.0556 18.8211C30.378 17.9758 29.9047 17.1306 29.6373 16.2853C29.3706 15.44 29.2364 14.5245 29.2364 13.5381C29.2364 11.6664 29.7706 10.1525 30.8397 8.99472C31.9089 7.83774 33.5014 7.25887 35.6188 7.25887C38.7147 7.25887 40.5537 8.87211 41.1353 12.0974C41.2264 12.6031 40.8771 13.0729 40.3737 13.1757L40.0803 13.2355C39.5166 13.3506 38.9819 12.9644 38.8394 12.407C38.7678 12.127 38.6861 11.8752 38.5942 11.6513C38.3984 11.1789 38.1517 10.8015 37.8534 10.5192C37.5551 10.2377 37.2059 10.0415 36.8059 9.93057C36.4043 9.82038 35.9472 9.76453 35.4338 9.76453C34.5088 9.76453 33.8251 9.98113 33.3834 10.4136C32.9418 10.8468 32.7205 11.3449 32.7205 11.9079C32.7205 12.3713 32.7822 12.7887 32.9055 13.1608C33.0289 13.5336 33.2956 13.9608 33.7072 14.4438C33.8922 14.6853 34.1959 15.0272 34.6175 15.4702C35.0384 15.9132 35.5117 16.4166 36.0358 16.9796C36.56 17.5434 37.0996 18.1419 37.6546 18.7758C38.2103 19.4098 38.7337 20.0287 39.227 20.6325C39.6379 21.1555 39.9925 21.6392 40.2908 22.0815C40.5891 22.5253 40.8303 22.9819 41.0153 23.4551C41.1996 23.9283 41.3391 24.4415 41.4316 24.9955C41.5233 25.5479 41.5703 26.1985 41.5703 26.9426C41.5703 27.7094 41.4362 28.4438 41.1695 29.1479ZM53.2445 32.4377C52.7809 32.4377 52.3781 32.1192 52.2714 31.6681L51.5566 28.6482C51.4498 28.1971 51.047 27.8785 50.5834 27.8785H47.597C47.1358 27.8785 46.7344 28.1939 46.6253 28.6421L45.8877 31.6741C45.7787 32.1223 45.3773 32.4377 44.916 32.4377H44.3412C43.6874 32.4377 43.2095 31.8208 43.3729 31.1878L49.2691 8.34255C49.3831 7.90098 49.7814 7.59245 50.2374 7.59245H50.5905C51.0505 7.59245 51.4511 7.90616 51.5614 8.35267L57.2039 31.198C57.3596 31.8284 56.8825 32.4377 56.2331 32.4377H53.2445ZM72.9565 31.4376C72.9565 31.99 72.5088 32.4377 71.9565 32.4377H69.2083C68.656 32.4377 68.2083 31.99 68.2083 31.4377V24.3472C68.2083 23.7026 68.1675 23.1653 68.0858 22.7328C68.0041 22.2996 67.8545 21.9577 67.6387 21.7057C67.4228 21.4551 67.1299 21.2785 66.7599 21.1781C66.39 21.0777 65.9167 21.0264 65.3416 21.0264C64.7963 21.0264 64.3542 21.4685 64.3542 22.0138V31.4377C64.3542 31.99 63.9065 32.4377 63.3542 32.4377H60.6067C60.0544 32.4377 59.6067 31.99 59.6067 31.4377V8.59245C59.6067 8.04017 60.0545 7.59245 60.6067 7.59245H65.2484C67.7358 7.59245 69.632 8.08075 70.9378 9.0566C72.2428 10.0332 72.8949 11.6483 72.8949 13.9019C72.8949 14.7879 72.797 15.5577 72.6028 16.2113C72.407 16.8657 72.1133 17.4242 71.7233 17.8868C71.3324 18.3502 70.8291 18.7321 70.2124 19.034C69.7757 19.2478 69.8086 20.2095 70.2469 20.4202C70.801 20.6866 71.2775 21.0245 71.6762 21.434C72.5295 22.3094 72.9558 23.6332 72.9558 25.4038L72.9565 31.4376ZM86.1846 9.18868C86.1846 9.74096 85.7369 10.1887 85.1846 10.1887H81.4505C80.8982 10.1887 80.4505 10.6364 80.4505 11.1887V17.4C80.4505 17.9523 80.8982 18.4 81.4505 18.4H83.3346C83.8869 18.4 84.3346 18.8477 84.3346 19.4V20.0257C84.3346 20.5779 83.8869 21.0257 83.3346 21.0257H81.4505C80.8982 21.0257 80.4505 21.4734 80.4505 22.0257V28.9026C80.4505 29.4549 80.8982 29.9026 81.4505 29.9026H85.1846C85.7369 29.9026 86.1846 30.3504 86.1846 30.9026V31.4377C86.1846 31.99 85.7369 32.4377 85.1846 32.4377H76.7015C76.1492 32.4377 75.7015 31.99 75.7015 31.4377V8.59245C75.7015 8.04017 76.1492 7.59245 76.7015 7.59245H85.1846C85.7369 7.59245 86.1846 8.04017 86.1846 8.59245V9.18868ZM95.5664 31.6877C95.4524 32.1292 95.0541 32.4377 94.5981 32.4377H94.2442C93.7843 32.4377 93.3837 32.124 93.2734 31.6775L87.6316 8.83221C87.4759 8.20176 87.953 7.59245 88.6024 7.59245H91.5907C92.0544 7.59245 92.4573 7.91127 92.5639 8.36258L94.7519 17.6261C94.9937 18.6497 96.4489 18.6542 96.6969 17.6321L98.9482 8.3566C99.057 7.90818 99.4585 7.59245 99.9199 7.59245H100.495C101.149 7.59245 101.627 8.20941 101.463 8.84239L95.5664 31.6877Z" fill="#FAFAFA"/>
+        </symbol>
+        <symbol id="telegram" viewBox="0 0 20 18" fill="none">
+            <path d="M0.931254 7.53576L18.668 0.683957C19.4912 0.385985 20.2102 0.885165 19.9435 2.13234L19.945 2.13081L16.925 16.3858C16.7012 17.3965 16.1018 17.6422 15.2632 17.1661L10.6642 13.7701L8.44599 15.9112C8.20071 16.157 7.99376 16.3643 7.51853 16.3643L7.84506 11.6751L16.3685 3.96011C16.7395 3.63295 16.2857 3.44864 15.7967 3.77426L5.2635 10.4187L0.722766 8.99951C-0.262949 8.68618 -0.284411 8.0119 0.931254 7.53576Z" fill="#039BE5"/>
+        </symbol>
+     </defs>
+    </svg>
+    
+   <!--sprite-->
+   <script>
+        Fancybox.bind("[data-fancybox]", {
+            Thumbs: {
+                showOnStart: false,
+            },
+            caption: function (fancybox, slide) {
+                return slide.thumbEl?.alt || "";
+            },
+        });
+        
+        const swiperLeft = new Swiper('.swiper-left', {
+            direction: 'vertical',
+            autoHeight: true,
+            loop: true,
+            slidesPerView: "auto",
+            mousewheel: true,
+            freeMode: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+        });
+        const swiperRight = new Swiper('.swiper-right', {
+            direction: 'vertical',
+            autoHeight: true,
+            // centeredSlides: true,
+            mousewheel: true,
+            freeMode: true,
+            loop: true,
+            slidesPerView: "auto",
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+                reverseDirection: true,
+            },
+        });
+        
+
+        document.getElementById('copyright').innerHTML = '&copy; ' + new Date().getFullYear() + ' Дизайн и разработка сайтов, интерфейсов и мобильных проложений.';
+
+   </script>
+   <script>
+    var __REPLAIN_ = '8a3afb65-e72f-4d71-9f53-d27ffa5488d3';
+    (function(u){var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=u;
+    var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+    })('https://widget.replain.cc/dist/client.js');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter31905976 = new Ya.Metrika({
+                        id:31905976,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/31905976" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
+</html>
+
+    
+    
+    
+    
