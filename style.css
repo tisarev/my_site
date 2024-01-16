@@ -160,6 +160,7 @@ body.stop-scrolling{
 }
 header{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1.25rem;
     padding: 2rem;
@@ -226,16 +227,18 @@ footer{
 }
 .contacts{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 10px 20px;
 }
 .contacts a{
     color: var(--white);
 }
 ul.numbers{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem 2rem;
 }
 ul.numbers li{
     display: flex;
@@ -264,6 +267,7 @@ ul.tags li:hover{
 }
 .telegram-block{
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     align-items: center;
 }
@@ -274,6 +278,14 @@ svg.logo{
 svg.telegram{
     width: 20px;
     height: 16.8px;
+}
+svg.hh{
+    width: 20px;
+    height: 20px;
+}
+svg.githab{
+    width: 20px;
+    height: 20px;
 }
 .swiper-slide figure{
     position: relative;
@@ -292,17 +304,85 @@ svg.telegram{
     opacity: 1;
 }
 /* screens */
+@media screen and (max-width: 1400px){
+    header{
+        margin-bottom: 4vh;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+}
 @media screen and (max-width: 1200px){
-        .container__padding-left{
+    .container__padding-left {
         padding-left: 3rem;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    ul.numbers li big {
+        font-size: 2.5rem;
+    }
+    ul.tags li{
+        font-size: 14px;
     }
 }
 @media screen and (max-width: 1024px){
+    .container__padding-left {
+        padding-left: 1.5rem;
+        gap: 1rem;
+    }
+    header{
+        margin-bottom: 1.5rem;
+    }
+    ul.numbers li big {
+        font-size: 2rem;
+    }
+    ul.numbers li{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    ul.numbers li br{
+        display: none;
+    }
+    header {
+        padding: 1.5rem;
+    }
 }
 @media screen and (max-width: 768px){
+    body{
+        flex-direction: column;
+        height: auto;
+    }
+    .content{
+        width: 100%;
+    }
+    footer{
+        display: none;
+    }
+    .portfolio-list{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 10px;
+        padding: 1.5rem;
+    }
+    .portfolio-list__block img:nth-child(1){
+        margin-top: 0;
+    }
+    ul.tags li {
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+    header {
+        margin-bottom: 0.5rem;
+    }
 }
 @media screen and (max-width: 520px){
 }
